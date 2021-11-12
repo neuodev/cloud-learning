@@ -1,7 +1,9 @@
 import os
 
 from flask import Flask
-from . import submit
+import click
+from . import submit, download
+from .utils import load_datasets_from_remote
 
 def create_app(test_config=None):
     # create and configure the app
@@ -31,5 +33,9 @@ def create_app(test_config=None):
 
     # Blue Prints
     app.register_blueprint(submit.bp)
-
+    app.register_blueprint(download.bp)
+    # Commands
+    @app.cli.command('install_datasets', help='Install datasets')
+    def datasets():
+        load_datasets_from_remote()
     return app
