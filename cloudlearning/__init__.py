@@ -1,9 +1,8 @@
 import os
 
 from flask import Flask
-import click
 from . import submit, download
-from .utils import load_datasets_from_remote
+from . import utils
 
 def create_app(test_config=None):
     # create and configure the app
@@ -37,5 +36,5 @@ def create_app(test_config=None):
     # Commands
     @app.cli.command('install_datasets', help='Install datasets')
     def datasets():
-        load_datasets_from_remote()
+        utils.load_datasets_from_remote()
     return app

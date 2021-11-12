@@ -1,3 +1,3 @@
-export FLASK_APP=cloud-learning
+export FLASK_APP=cloudlearning
 export FLASK_ENV=development
 flask run
